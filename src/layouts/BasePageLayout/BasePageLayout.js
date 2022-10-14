@@ -12,7 +12,7 @@ const BasePageLayout = ({ children }) => {
 					<img src={userPorfile} alt="user avatar" />
 				</div>
 			</header>
-			{children}
+			<div className={styles.container}>{children}</div>
 		</div>
 	);
 };

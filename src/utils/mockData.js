@@ -7,7 +7,7 @@ export const mockedData = [
 	},
 	{
 		id: 1,
-		taskTitle: "Statuc Books List",
+		taskTitle: "Static Books List",
 		taskStatus: "completed",
 		businessCtx: [],
 	},
@@ -24,28 +24,40 @@ export const mockedData = [
 		businessCtx: [
 			{
 				id: 0,
-				sender: "Olga Nelson",
-				date: "dec 17",
+				author: "Olga Nelson",
+				avatar: "https://randomuser.me/api/portraits/women/65.jpg",
+				createdAt: {
+					date: "2022-09-15",
+					hour: "11:48",
+				},
 				title: "New sprint, tasks and intro information.",
-				message:
+				content:
 					"Hi Eric, congratulations on completing the previous assignment. This time you will have to focus on...",
 				ctxStatus: "new",
 			},
 			{
 				id: 1,
-				sender: "Kristen Aniston",
-				date: "dec 17",
-				title: "Application has been accepted",
-				message:
+				author: "Kirsten Aniston",
+				avatar: "https://randomuser.me/api/portraits/women/29.jpg",
+				createdAt: {
+					date: "2022-10-05",
+					hour: "11:48",
+				},
+				title: "Application has been accepted.",
+				content:
 					"Hi Eric, congratulations on completing the previous assignment. This time you will have to focus on...",
 				ctxStatus: "active",
 			},
 			{
 				id: 2,
-				sender: "Olga Nelson",
-				date: "dec 17",
+				author: "Olga Nelson",
+				avatar: "https://randomuser.me/api/portraits/women/65.jpg",
+				createdAt: {
+					date: "2022-10-05",
+					hour: "11:48",
+				},
 				title: "New sprint, tasks and intro information.",
-				message:
+				content:
 					"Hi Eric, congratulations on completing the previous assignment. This time you will have to focus on...",
 				ctxStatus: "read",
 			},

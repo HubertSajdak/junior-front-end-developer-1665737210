@@ -1,0 +1,65 @@
+.contextItem,
+.contextItemNew,
+.contextItemRead {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 8px;
+	width: 304px;
+	height: 104px;
+	margin: 8px 8px;
+	background-color: var(--color-white);
+	border-radius: 12px;
+	overflow: hidden;
+	padding: 20px;
+	box-shadow: 0px 8px 16px rgba(84, 84, 84, 0.2);
+	text-align: justify;
+	color: var(--color-grey);
+	cursor: pointer;
+}
+.contextItemRead {
+	background-color: var(--color-gray);
+	box-shadow: none;
+}
+
+.contextItemNew {
+	box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+}
+.authorInfo {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: var(--font-size-small);
+	line-height: var(--line-height-normal);
+	color: var(--color-grey);
+}
+.new {
+	background-color: var(--color-blue);
+	color: var(--color-white);
+	font-weight: 600;
+	border-radius: 4px;
+	padding: 2px 7px;
+}
+.dot {
+	width: 3px;
+	height: 3px;
+	background-color: var(--color-grey);
+	border-radius: 50%;
+}
+.title,
+.titleNew {
+	line-height: var(--line-height-normal);
+	font-size: var(--font-size-normal);
+	font-weight: 700;
+}
+.title {
+	color: var(--color-black);
+}
+
+.titleNew {
+	color: var(--color-blue);
+}
+.content {
+	font-size: var(--font-size-small);
+	line-height: var(--line-height-normal);
+}
