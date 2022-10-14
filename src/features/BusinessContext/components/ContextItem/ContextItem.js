@@ -1,10 +1,11 @@
 import styles from "./ContextItem.module.css";
-const ContextItem = ({ title, content, author, createdAt, ctxStatus }) => {
+const ContextItem = ({ id, title, avatar, content, author, createdAt, hour, ctxStatus, onClick }) => {
 	return (
 		<div
 			className={
 				ctxStatus === "new" ? styles.contextItemNew : ctxStatus === "read" ? styles.contextItemRead : styles.contextItem
-			}>
+			}
+			onClick={() => onClick({ id, title, avatar, content, author, createdAt, hour, ctxStatus })}>
 			<div className={styles.authorInfo}>
 				{ctxStatus === "new" && <p className={styles.new}>NEW</p>}
 				<p className={styles.author}>{author}</p>
