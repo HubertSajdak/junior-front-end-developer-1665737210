@@ -1,0 +1,24 @@
+.taskList {
+	width: 320px;
+	background-color: var(--color-white);
+	border-radius: 12px;
+	height: 100%;
+}
+.header {
+	width: 100%;
+	height: 65px;
+	padding: 23px 221px 23px 24px;
+	border-bottom: 2px solid var(--color-gray);
+}
+.title {
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: var(--font-size-small);
+	line-height: var(--line-height-normal);
+}
+.content {
+	display: flex;
+	flex-direction: column;
+	padding: 24px 23px;
+	gap: 16px;
+}
