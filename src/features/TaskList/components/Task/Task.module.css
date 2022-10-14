@@ -3,10 +3,10 @@
 	align-items: center;
 	font-size: var(--font-size-normal);
 	gap: 10px;
+	cursor: pointer;
 }
 .icon {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-
