@@ -1,0 +1,14 @@
+.avatar {
+	width: 42px;
+	height: 42px;
+	border-radius: 50%;
+	border: 1px solid black;
+	padding: 2px;
+	display: grid;
+	place-items: center;
+}
+.img {
+	width: 100%;
+	height: auto;
+	border-radius: 50%;
+}
