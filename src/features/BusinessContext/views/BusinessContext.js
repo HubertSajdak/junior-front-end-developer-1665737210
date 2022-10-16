@@ -1,27 +1,35 @@
-import Appbar from "../components/Appbar/Appbar";
+import ContextTab from "../components/ContextTab/ContextTab";
 import styles from "../BusinessContext.module.css";
 import ContextList from "../components/ContextsList/ContextList";
-import { tasksData } from "../../../utils/tasksData";
-import ContextMessage from "../components/ContextMessage/ContextMessage";
+import ContextBody from "../components/ContextBody/ContextBody";
 import { useContext } from "react";
 import TaskContext from "../../../context/TaskContext";
+import breadcrumbIcon from "../../../images/breadcrumbIcon.svg";
+import { useParams } from "react-router-dom";
 const BusinessContext = () => {
-	const { currentContext } = useContext(TaskContext);
+	const { activeContext, tasksData } = useContext(TaskContext);
+
+	const pathname = useParams();
+	const prevActiveTaskBusinessContextId = tasksData.find(task => task.id === +pathname.taskId).lastActiveBusinessCtx;
+	const activeTaskBusinessContextList = tasksData.find(task => task.id === +pathname.taskId).businessCtx;
+
 	return (
 		<div className={styles.businessCtx}>
-			<Appbar breadcrumbTitle="business context" />
+			<ContextTab breadcrumbsList={[{ id: 0, title: "business context", icon: breadcrumbIcon }]} />
 			<div className={styles.wrapper}>
-				<ContextList contextList={tasksData} />
-				{currentContext && (
-					<ContextMessage
-						title={currentContext.title}
-						avatar={currentContext.BusinessContextavatar}
-						author={currentContext.author}
-						createdAt={currentContext.createdAt}
-						hour={currentContext.hour}
-						content={currentContext.content}
-					/>
-				)}
+				<ContextList
+					activeContext={activeContext}
+					activeTaskBusinessContextList={activeTaskBusinessContextList}
+					prevActiveTaskBusinessContextId={prevActiveTaskBusinessContextId}
+				/>
+				<ContextBody
+					title={activeContext.title}
+					avatar={activeContext.avatar}
+					author={activeContext.author}
+					createdAt={activeContext.createdAt}
+					hour={activeContext.hour}
+					content={activeContext.content}
+				/>
 			</div>
 		</div>
 	);

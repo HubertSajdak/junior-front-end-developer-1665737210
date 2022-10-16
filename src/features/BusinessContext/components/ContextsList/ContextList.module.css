@@ -1,7 +1,16 @@
 .contextList {
 	display: flex;
 	flex-direction: column;
+	width: 100%;
+	max-width: 320px;
 	height: 100%;
 	background-color: var(--color-gray);
 	border-radius: 0px 0px 0px 10px;
+}
+@media (max-width: 768px) {
+	.contextList {
+		align-items: center;
+		border-radius: 0px 0px 10px 10px;
+		max-width: none;
+	}
 }

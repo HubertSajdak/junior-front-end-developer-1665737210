@@ -5,8 +5,9 @@
 	flex-direction: column;
 	justify-content: center;
 	gap: 8px;
-	width: 304px;
-	height: 104px;
+	width: 300px;
+	height: auto;
+	max-height: 110px;
 	margin: 8px 8px;
 	background-color: var(--color-white);
 	border-radius: 12px;
@@ -33,12 +34,12 @@
 	line-height: var(--line-height-normal);
 	color: var(--color-grey);
 }
-.new {
+.newNotification {
 	background-color: var(--color-blue);
 	color: var(--color-white);
 	font-weight: 600;
 	border-radius: 4px;
-	padding: 2px 7px;
+	padding: 3px 7px;
 }
 .dot {
 	width: 3px;
@@ -62,4 +63,15 @@
 .content {
 	font-size: var(--font-size-small);
 	line-height: var(--line-height-normal);
+}
+@media (max-width: 768px) {
+	.contextItem,
+	.contextItemNew,
+	.contextItemRead {
+		width: 95%;
+		max-height: 200px;
+		height: auto;
+		margin: 8px;
+		padding: 10px 20px;
+	}
 }

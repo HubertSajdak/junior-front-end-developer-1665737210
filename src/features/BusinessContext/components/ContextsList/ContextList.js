@@ -1,15 +1,51 @@
-import React from "react";
 import ContextItem from "../ContextItem/ContextItem";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import TaskContext from "../../../../context/TaskContext";
 import styles from "./ContextList.module.css";
-const ContextList = ({ contextList }) => {
-	const { currentTask, activeContextHandler } = useContext(TaskContext);
+import { useParams } from "react-router-dom";
+const ContextList = ({ activeContext, activeTaskBusinessContextList, prevActiveTaskBusinessContextId }) => {
+	const { activeContextHandler, setTasksData } = useContext(TaskContext);
+	const pathname = useParams();
+
+	useEffect(() => {
+		//automatically changes active context to previously read context by the user
+		const prevActiveContext = activeTaskBusinessContextList.find(ctx => ctx.id === prevActiveTaskBusinessContextId);
+		activeContextHandler({ ...prevActiveContext });
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [pathname.taskId]);
+
+	const changeActiveContext = currentContextInfo => {
+		//changing business context message status after user clicks on it
+		setTasksData(prevState => {
+			const updatedTasks = [...prevState];
+
+			updatedTasks.map(task => {
+				if (task.id === +pathname.taskId) {
+					return task.businessCtx.map(context => {
+						if (context.id === currentContextInfo.id) {
+							return (context.ctxStatus = "read");
+						}
+						return context;
+					});
+				}
+				return task;
+			});
+
+			//changing task's last read context by user
+			updatedTasks.map(task => {
+				if (task.id === +pathname.taskId) {
+					return (task.lastActiveBusinessCtx = currentContextInfo.id);
+				}
+				return task;
+			});
+			return updatedTasks;
+		});
+		activeContextHandler(currentContextInfo);
+	};
 
 	return (
-		<div className={styles.contextList}>
-			{contextList[currentTask].businessCtx.map(item => {
-				const contextDate = new Date(item.createdAt);
+		<ul className={styles.contextList}>
+			{activeTaskBusinessContextList.map(item => {
 				return (
 					<ContextItem
 						key={item.id}
@@ -18,13 +54,15 @@ const ContextList = ({ contextList }) => {
 						avatar={item.avatar}
 						author={item.author}
 						content={item.content}
-						createdAt={contextDate.toLocaleString("en-US", { day: "numeric", month: "short" })}
+						createdAt={item.createdAt}
+						hour={item.hour}
 						ctxStatus={item.ctxStatus}
-						onClick={activeContextHandler}
+						onClick={changeActiveContext}
+						isActive={activeContext && item.id === activeContext.id ? true : false}
 					/>
 				);
 			})}
-		</div>
+		</ul>
 	);
 };
 

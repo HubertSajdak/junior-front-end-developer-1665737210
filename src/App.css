@@ -24,9 +24,14 @@
 
 body {
 	font-family: "Poppins", sans-serif;
+	background-color: var(--color-gray);
+
 }
 .App {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+a {
+	text-decoration: none;
 }
