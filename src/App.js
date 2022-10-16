@@ -1,16 +1,20 @@
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { TaskProvider } from "./context/TaskContext";
 import BusinessContext from "./features/BusinessContext/views/BusinessContext";
-import TaskList from "./features/TaskList/views/TaskList";
-import BasePageLayout from "./layouts/BasePageLayout/BasePageLayout";
+import DashboardLayoutWrapper from "./wrappers/DashboardLayourWrapper/DashboardLayoutWrapper";
 
 function App() {
 	return (
 		<TaskProvider>
-			<BasePageLayout>
-				<TaskList />
-				<BusinessContext />
-			</BasePageLayout>
+			<BrowserRouter>
+				<Routes>
+					<Route element={<DashboardLayoutWrapper />}>
+						<Route path="/:taskId" element={<BusinessContext />} />
+						<Route path="/" element={<Navigate to="/0" />} />
+					</Route>
+				</Routes>
+			</BrowserRouter>
 		</TaskProvider>
 	);
 }

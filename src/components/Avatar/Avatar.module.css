@@ -1,14 +1,20 @@
 .avatar {
+	position: relative;
+	min-width: 50px;
+	min-height: 50px;
 	width: 42px;
 	height: 42px;
 	border-radius: 50%;
-	border: 1px solid black;
+	border: 1px solid var(--color-grey);
 	padding: 2px;
-	display: grid;
-	place-items: center;
 }
 .img {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	min-width: 42px;
+	min-height: 42px;
 	width: 100%;
-	height: auto;
+	height: 100%;
 	border-radius: 50%;
 }
